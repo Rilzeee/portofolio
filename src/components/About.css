@@ -1,0 +1,237 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 150px 24px 90px;
+  overflow: hidden;
+}
+
+/* ===== Blob glow dekoratif ===== */
+.about-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-glow--2 {
+  width: 420px;
+  height: 420px;
+  bottom: -140px;
+  right: -140px;
+  background: radial-gradient(circle, rgba(82, 39, 255, 0.28), transparent 70%);
+}
+
+.about-title {
+  margin: 0 0 24px;
+  font-size: clamp(1.8rem, 3vw, 2.3rem);
+  z-index: 1;
+  color: var(--text-h);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "photo card1 card2"
+    "photo card3 card3";
+  gap: 20px;
+  align-items: stretch;
+  z-index: 1;
+  width: 100%;
+}
+
+.about-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+  padding: 24px 28px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35);
+}
+
+.about-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), transparent 40%);
+  pointer-events: none;
+}
+
+/* Ikon di kartu */
+.about-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.about-card--cyan .about-card-icon {
+  color: #22d3ee;
+}
+
+.about-card--green .about-card-icon {
+  color: #34d399;
+}
+
+.about-photo-card {
+  grid-area: photo;
+  min-height: 450px;
+}
+
+.about-card--cyan {
+  grid-area: card1;
+}
+
+.about-card--green {
+  grid-area: card2;
+}
+
+.about-card-wide {
+  grid-area: card3;
+  min-height: 270px;
+}
+
+/* Ring gradient berputar di sekitar foto */
+.about-photo-ring {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+  padding: 6px;
+  background: conic-gradient(from 0deg, #7cff67, #b497cf, #5227ff, #7cff67);
+  animation: ringSpin 8s linear infinite;
+}
+
+.about-photo-ring::before {
+  content: "";
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 255, 103, 0.25), transparent 70%);
+  z-index: -1;
+}
+
+@keyframes ringSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.about-photo-caption {
+  margin-top: 16px;
+  color: var(--text);
+  font-size: 0.94rem;
+  text-align: center;
+}
+
+.about-card p {
+  color: var(--text);
+  margin-bottom: 0;
+  line-height: 1.65;
+}
+
+.about-card h3 {
+  color: var(--text-h);
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.about-card ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.about-card li {
+  color: var(--text);
+  padding-left: 0;
+  position: relative;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.attr-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  font-size: 1rem;
+  color: #7cff67;
+  background: rgba(124, 255, 103, 0.12);
+  border: 1px solid rgba(124, 255, 103, 0.3);
+  flex-shrink: 0;
+}
+
+.about-card--violet {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(17, 24, 39, 0.95));
+}
+
+.about-card--cyan {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.18), rgba(17, 24, 39, 0.95));
+}
+
+.about-card--green {
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.18), rgba(17, 24, 39, 0.95));
+}
+
+.about-card--pink {
+  background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(17, 24, 39, 0.95));
+}
+
+@media (max-width: 720px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "card1"
+      "card2"
+      "card3";
+  }
+
+  .about-photo-card {
+    min-height: 280px;
+  }
+}
+

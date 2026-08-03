@@ -1,0 +1,189 @@
+.skills {
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 30px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills h2 {
+  margin: 0 0 22px;
+}
+
+/* ===== Container orbit ===== */
+.skills-orbit {
+  position: relative;
+  width: min(680px, 88vw);
+  aspect-ratio: 1;
+}
+
+/* ===== Lapisan SVG garis penghubung ===== */
+.orbit-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 0;
+}
+
+.orbit-lines line {
+  stroke-width: 0.3;
+  opacity: 0.4;
+  stroke-dasharray: 0.03 0.05;
+  stroke-linecap: round;
+  animation: skillFlow 3s linear infinite;
+}
+
+@keyframes skillFlow {
+  to {
+    stroke-dashoffset: -1;
+  }
+}
+
+/* ===== Foto di tengah dengan ring berputar ===== */
+.orbit-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  z-index: 2;
+}
+
+.orbit-center::before {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #7cff67,
+    #b497cf,
+    #5227ff,
+    #7cff67
+  );
+  animation: ringSpin 6s linear infinite;
+  z-index: -1;
+}
+
+.orbit-center::after {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(124, 255, 103, 0.28),
+    rgba(82, 39, 255, 0.12) 45%,
+    transparent 68%
+  );
+  z-index: -2;
+  animation: centerBreath 3s ease-in-out infinite;
+}
+
+.orbit-center img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--bg);
+  box-shadow:
+    0 0 36px -6px rgba(124, 255, 103, 0.55),
+    0 0 60px -14px rgba(82, 39, 255, 0.6);
+}
+
+@keyframes ringSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes centerBreath {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+/* ===== Kartu skill mengelilingi ===== */
+.orbit-skill {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.orbit-skill-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
+  color: var(--glow);
+  background: color-mix(in srgb, var(--glow) 14%, var(--bg));
+  border: 1px solid color-mix(in srgb, var(--glow) 45%, transparent);
+  box-shadow: 0 0 16px -4px var(--glow);
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease;
+}
+
+.orbit-skill:hover {
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+.orbit-skill:hover .orbit-skill-icon {
+  box-shadow: 0 0 28px -2px var(--glow);
+}
+
+.orbit-skill-name {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-h);
+  white-space: nowrap;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--glow) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--glow) 35%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .orbit-center {
+    width: 105px;
+    height: 105px;
+  }
+
+  .orbit-skill-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .orbit-skill-name {
+    font-size: 0.58rem;
+    padding: 2px 7px;
+  }
+}
+

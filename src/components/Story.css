@@ -1,0 +1,23 @@
+.story {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 40px 0 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.story h2 {
+  margin: 0 0 12px;
+}
+
+.story-gallery {
+  width: 100%;
+  height: min(750px, 90vh);
+  position: relative;
+}
+

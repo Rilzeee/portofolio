@@ -1,0 +1,9 @@
+.aurora-container {
+  position: absolute; /* atau fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Bikin minus biar dia pindah ke belakang */
+  pointer-events: none; /* Biar kursor mouse 'menembus' aurora dan bisa menyentuh gambar */
+}
