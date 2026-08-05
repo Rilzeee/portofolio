@@ -56,21 +56,23 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  touch-action: pan-y;
-  -webkit-tap-highlight-color: transparent;
-}
-
 html,
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory; /* Memaksa scroll berhenti tepat di tiap section */
+  -webkit-tap-highlight-color: transparent;
 }
 
+#root {
+  width: 100%;
+  min-height: 100svh;
+}
+
+/* Section: di desktop pakai 100vw, dikunci overflow */
 .section-snap {
   height: 100vh; /* Tinggi 1 layar penuh */
   width: 100vw;
@@ -81,23 +83,31 @@ body {
 }
 
 /* Di layar kecil, matikan snap-scroll & biarkan konten mengalir penuh
-   agar tidak terpotong / bisa di-scroll normal di mobile. */
+   agar tidak terpotong / bisa di-scroll normal di mobile.
+   Hanya kunci overflow horizontal, jangan ubah posisi agar desktop tetap normal. */
 @media (max-width: 768px) {
   html,
   body {
     scroll-snap-type: none;
+    overflow-x: hidden;
+    overflow-x: clip;
+    overscroll-behavior-x: none;
+  }
+
+  body {
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
   }
 
   .section-snap {
     height: auto;
     min-height: 100svh;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-x: clip;
+    overflow-y: visible;
+    width: 100%;
+    max-width: 100%;
   }
-}
-
-#root {
-  width: 100vw;
-  min-height: 100svh;
 }
 
 /* ===== Scroll reveal (semua section kecuali Skills) ===== */
