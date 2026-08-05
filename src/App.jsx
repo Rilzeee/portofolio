@@ -14,12 +14,25 @@ function App() {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
+    // Kunci scroll body selama loading tampil
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
     const timer = setTimeout(() => {
       setFadeOut(true); // mulai fade-out
-      setTimeout(() => setLoading(false), 600); // hapus setelah animasi selesai
+      setTimeout(() => {
+        setLoading(false); // hapus setelah animasi selesai
+        // Buka kembali scroll setelah loading selesai
+        document.body.style.overflow = "";
+        document.documentElement.style.overflow = "";
+      }, 600);
     }, 3000); // loading 3 detik
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
   }, []);
 
 if (loading) {
