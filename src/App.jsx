@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Aurora from "./components/Aurora";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -6,8 +7,25 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Story from "./components/Story";
 import Contact from "./components/Contact";
+import Loading from "./components/Loading";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFadeOut(true); // mulai fade-out
+      setTimeout(() => setLoading(false), 600); // hapus setelah animasi selesai
+    }, 3000); // loading 3 detik
+
+    return () => clearTimeout(timer);
+  }, []);
+
+if (loading) {
+    return <Loading fadeOut={fadeOut} />;
+  }
+
   return (
     <div className="main-wrapper">
       {/* Background Aurora tetap di belakang */}
@@ -23,7 +41,7 @@ function App() {
         }}
       >
         <Aurora
-          colorStops={["#7cff67", "#B497CF", "#5227FF"]}
+          colorStops={["#34f5ab", "#B497CF", "#5227FF"]}
           blend={0.5}
           amplitude={1}
           speed={0.5}

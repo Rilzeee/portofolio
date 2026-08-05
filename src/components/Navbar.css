@@ -27,7 +27,7 @@ nav::after {
   transform: translateX(-50%) scaleX(0);
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #7cff67, transparent);
+  background: linear-gradient(90deg, transparent, #34f5ab, transparent);
   transform-origin: center;
   transition: transform 0.4s ease;
 }
@@ -64,8 +64,45 @@ nav a {
 }
 
 nav a:hover {
-  color: #7cff67;
+  color: #34f5ab;
   text-shadow: 0 0 12px rgba(124, 255, 103, 0.5);
+}
+
+/* ===== Tombol hamburger ===== */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 101;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 @media (max-width: 768px) {
@@ -78,12 +115,53 @@ nav a:hover {
     letter-spacing: 1px;
   }
 
+  .nav-toggle {
+    display: flex;
+  }
+
   nav ul {
-    gap: 14px;
+    position: fixed;
+    top: 70px;
+    left: 12px;
+    right: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding: 14px;
+    background: rgba(18, 18, 24, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+
+  nav ul.open {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  nav ul li {
+    width: 100%;
   }
 
   nav a {
-    font-size: 13px;
+    display: block;
+    font-size: 15px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  nav a:hover {
+    background: rgba(124, 255, 103, 0.08);
   }
 }
 

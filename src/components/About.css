@@ -7,7 +7,7 @@
   width: 100%;
   max-width: 1040px;
   margin: 0 auto;
-  padding: 150px 24px 90px;
+  padding: 100px 24px 90px;
   overflow: hidden;
 }
 
@@ -100,7 +100,7 @@
 
 .about-photo-card {
   grid-area: photo;
-  min-height: 450px;
+  min-height: 500px;
 }
 
 .about-card--cyan {
@@ -157,6 +157,248 @@
   color: var(--text);
   font-size: 0.94rem;
   text-align: center;
+}
+
+/* ===== Statistik animasi (2+ Years, 6+ Projects) ===== */
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 22px;
+  width: 100%;
+}
+
+.about-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 14px 10px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-stat:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124, 255, 103, 0.5);
+  box-shadow: 0 10px 24px rgba(124, 255, 103, 0.15);
+}
+
+.about-stat-value {
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(120deg, #7cff67, #b497cf, #5227ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: statGlow 3s ease-in-out infinite;
+}
+
+.about-stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+@keyframes statGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(124, 255, 103, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(82, 39, 255, 0.5));
+  }
+}
+
+/* ===== Tombol View CV (di bawah statistik, memanjang) ===== */
+.about-cv-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #1e1e1f, #B497CF);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.about-cv-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(82, 39, 255, 0.35), 0 0 18px rgba(124, 255, 103, 0.2);
+  filter: brightness(1.12);
+}
+
+/* ===== Modal CV ===== */
+.cv-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: cvFadeIn 0.3s ease;
+}
+
+.cv-modal-content {
+  position: relative;
+  width: min(720px, 95vw);
+  max-height: 92vh;
+  overflow-y: auto;
+  background: #17181f;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  animation: cvPop 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cv-modal-close {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.cv-modal-close:hover {
+  transform: rotate(90deg) scale(1.1);
+  background: rgba(82, 39, 255, 0.8);
+}
+
+.cv-modal-image {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+}
+
+.cv-modal-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Tombol download (ikon download, bg hitam, ikon putih) sticky di pojok kanan bawah - muncul saat scroll (desktop) */
+.cv-download-btn {
+  position: sticky;
+  float: right;
+  bottom: 20px;
+  right: 20px;
+  margin-top: -60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  font-size: 1.3rem;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50%;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: translateY(12px) scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.25s ease;
+  z-index: 3;
+}
+
+.cv-download-btn.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.cv-download-btn:hover {
+  transform: translateY(-3px) scale(1.1);
+  background: #111;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
+}
+
+/* ===== Mode Mobile: CV layar penuh & tombol download selalu tampil ===== */
+@media (max-width: 768px) {
+  .cv-modal {
+    padding: 0;
+  }
+
+  .cv-modal-content {
+    width: 100vw;
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+  }
+
+  .cv-modal-image {
+    border-radius: 0;
+  }
+
+  .cv-modal-image img {
+    object-fit: contain;
+  }
+
+  .cv-download-btn {
+    position: sticky;
+    float: right;
+    bottom: 24px;
+    right: 24px;
+    margin-top: -60px;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .cv-modal-close {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+@keyframes cvFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cvPop {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .about-card p {
@@ -221,6 +463,10 @@
 }
 
 @media (max-width: 720px) {
+  .about {
+    padding: 120px 20px 60px;
+  }
+
   .about-grid {
     grid-template-columns: 1fr;
     grid-template-areas:

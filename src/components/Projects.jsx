@@ -6,28 +6,28 @@ const PROJECTS = [
   {
     title: "PHP",
     desc: "Membuat database menggunakan php dan di tampilkan melalui Locallhost.",
-    img: "/image/Projects1.png",
+img: "image/Projects1.png",
     demo: "#",
     code: "#",
   },
   {
     title: "My Portfolio V1",
     desc: "Portofolio pertama saya yang di baut hanya dengan menggunakan HTML dan CSS.",
-    img: "/image/Project2.png",
+img: "image/Project2.png",
     demo: "#",
     code: "#",
   },
   {
     title: "Laravel",
     desc: "Belajar cara menggunakan Laravel yang sangat membingungkan, dan membuat kepala pusing.",
-    img: "/image/Project3.png",
+img: "image/Project3.png",
     demo: "#",
     code: "#",
   },
   {
     title: "My Portofolio V2",
     desc: "Web yang sekarang anda lihat, adalah web portofolio saya yang baru.",
-    img: "/image/Project4.png",
+img: "image/Project4.png",
     demo: "#",
     code: "#",
   },
@@ -68,7 +68,7 @@ function Projects() {
 
   return (
     <section className="projects reveal" id="projects" ref={revealRef}>
-      <h2>Projects</h2>
+      <h2>PROJECTS</h2>
 
       <div className="projects-grid">
         {PROJECTS.map((project) => (

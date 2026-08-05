@@ -36,7 +36,7 @@ function Home() {
             thickness={2}
             style={{ borderRadius: 16 }}
           >
-            <img src="/image/me.png" alt="me" />
+<img src="image/me.png" alt="me" />
           </ElectricBorder>
         </div>
 
@@ -50,12 +50,12 @@ function Home() {
             HEY, I'M MUHAMMAD HAFIZH ARASYID
           </GradientText>
           <p>
-            I'm a Front-End Developer and UI/UX Designer. I have experience in creating
+            I'm a Front-End Developer. I have experience in creating
             responsive and user-friendly websites using HTML, CSS, JavaScript, and React.
-            I also have experience in designing user interfaces using Figma and Adobe XD.
+            I also have experience in designing user interfaces using Figma.
           </p>
 
-          <div className="button-group">
+<div className="button-group">
             <button
               className="btn-projects"
               onClick={() => scrollToSection("projects")}

@@ -14,13 +14,13 @@ const SOCIALS = [
     label: "Instagram",
     icon: <FaInstagram />,
     url: "https://www.instagram.com/hafizarsyd/",
-    color: "#E4405F",
+    color: "#8513e2",
   },
   {
     label: "TikTok",
     icon: <FaTiktok />,
     url: "https://www.tiktok.com/@hafizar03_",
-    color: "#000000",
+    color: "#444343",
   },
   {
     label: "Discord",
@@ -62,7 +62,7 @@ function Contact() {
 
   return (
     <section className="contact reveal" id="contact" ref={revealRef}>
-      <h2>Contact</h2>
+      <h2>CONTACT</h2>
 
       <div className="contact-grid">
         {/* ====== LANYARD ====== */}
@@ -70,8 +70,8 @@ function Contact() {
           <Lanyard
             position={[0, 0, 10]}
             gravity={[0, -65, 0]}
-            frontImage="/lanyard/me.front.png"
-            backImage="/lanyard/back.png"
+frontImage="lanyard/me.front.png"
+            backImage="lanyard/back.png"
             imageFit="cover"
             lanyardWidth={1.2}
           />
@@ -134,10 +134,13 @@ function Contact() {
               ))}
             </div>
 
-            <p className="inspired-label">I was inspired to coding by</p>
+            <p className="inspired-label"> Inspired coding by</p>
             <div className="inspired-names">
-              <span>- M. Abdurahman Al Ghafiqi, S.Kom</span>
+              <span>- M. Abdurrahman Al Ghafiqi, S.Kom</span>
+              <span>- Krido Suseno, S.T</span>
               <span>- Muhammad Ferdi Alfian</span>
+              <span>- Moch Sutta Puttra H</span>
+
             </div>
           </div>
         </div>

@@ -1,28 +1,14 @@
-# TODO
+# TODO: Animasi 2 Years Experience & 6 Projects + Penyesuaian Ikon Key Attributes
 
-## Proyek: Masukan foto project + kotak project 4
-- [x] Read current Projects.jsx and Projects.css
-- [x] Confirm plan with user (Project 4 title: "new my portofolio")
-- [x] Add `img` field to projects 1, 2, 3 in Projects.jsx
-- [x] Add 4th project box ("new my portofolio") with Project4.png
-- [x] Render image inside `.project-thumb`
-- [x] Update Projects.css to style the images
-- [x] Verify with dev server (build sukses)
-
-## Feedback lanjutan
-- [x] Lanyard background dibuat glass/simple (Contact.css)
-- [x] Navbar: link ke kanan + nama "M.HAFIZH ARASYID" di kiri
-- [x] Scroll reveal animation untuk semua section kecuali Skills
-- [x] About didesain lebih menarik (glow, ring foto berputar, ikon, chip attributes)
-
-## Feedback terbaru
-- [x] Navbar: hilangkan blur, tambah animasi hover (background + garis bawah)
-- [x] Nama brand & judul About jadi warna polos (tidak gradient)
-- [x] About: hilangkan blur/glow aneh di sisi kiri
-- [x] Projects: 4 sejajar dalam satu baris (4 kolom)
-- [x] Story: dikembalikan ke tampilan awal (CircularGallery), tanpa animasi scroll reveal
-- [x] Contact: tambah teks "I was inspired to coding by" + 2 nama di bawah sosial media
-- [x] Build sukses setelah semua perubahan
-
-</content>
-
+## Langkah
+- [x] 1. `About.jsx`: tambah komponen `Counter` animasi angka + baris statistik (2+ Years, 6+ Projects) di bawah caption foto
+- [x] 2. `About.jsx`: sesuaikan ikon `ATTRIBUTES` agar cocok dengan label (Award, Monitor, Server, Database)
+- [x] 3. `About.css`: tambah style untuk statistik animasi (angka besar, gradient, pulse)
+- [x] 4. Verifikasi build (`npm run build`)
+- [x] 5. `About.jsx` + `About.css`: tambah tombol "View CV" memanjang di bawah statistik + modal tampil CV dengan tombol download kecil di kanan bawah
+- [x] 6. `Home.jsx` + `Home.css`: hapus tombol "Download CV" dari Home
+- [x] 7. `About.jsx` + `About.css`: haluskan animasi counter (ease-out-expo, durasi 2.6s)
+- [x] 8. `About.jsx` + `About.css`: ganti ikon tombol download jadi ikon download (FiDownload) bg hitam ikon putih; di mobile CV fullscreen & tombol download selalu tampil tanpa animasi
+- [x] 9. `Loading.jsx` + `Loading.css` (baru): loading page keren dengan logo MHA gradient + nama "Muhammad Hafizh Arasyid" + progress bar, tampil 3 detik
+- [x] 10. `App.jsx`: integrasikan loading page (3 detik) + fade-out sebelum masuk home
+- [x] 11. `Loading.jsx` + `Loading.css`: desain ulang logo MHA jadi monogram SVG tersambung (stroke draw animation) tanpa kotak, warna lebih kalem (gradient halus + glow redup)

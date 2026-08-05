@@ -1,0 +1,232 @@
+/* ===== Loading Page Overlay ===== */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 40%, #18151f 0%, #0d0b12 100%);
+  overflow: hidden;
+  animation: loadingFadeIn 0.6s ease;
+}
+
+/* ===== Glow dekoratif (netral, sangat halus) ===== */
+.loading-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.loading-glow--1 {
+  width: 380px;
+  height: 380px;
+  top: -120px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06), transparent 70%);
+}
+
+.loading-glow--2 {
+  width: 340px;
+  height: 340px;
+  bottom: -100px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 70%);
+}
+
+/* ===== Konten ===== */
+.loading-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  text-align: center;
+  padding: 24px;
+}
+
+/* ===== Logo MHA — monogram SVG tersambung ===== */
+.loading-monogram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mg-svg {
+  width: min(280px, 78vw);
+  height: auto;
+  overflow: visible;
+}
+
+/* Garis huruf — stroke putih polos & sederhana */
+.mg-stroke {
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  animation: drawLine 1.8s ease forwards;
+}
+
+/* Garis penghubung bawah */
+.mg-underline {
+  stroke: rgba(255, 255, 255, 0.35);
+  stroke-width: 2;
+  stroke-linecap: round;
+  fill: none;
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: drawLine 1.8s ease forwards;
+}
+
+/* Animasi menggambar garis (stroke draw) */
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Delay berurutan per huruf */
+.mg-stroke:nth-of-type(1) { animation-delay: 0.1s; }
+.mg-stroke:nth-of-type(2) { animation-delay: 0.35s; }
+.mg-stroke:nth-of-type(3) { animation-delay: 0.6s; }
+.mg-underline { animation-delay: 0.9s; }
+
+/* ===== Nama ===== */
+.loading-name {
+  margin: 0;
+  font-family: 'Orbitron', 'Segoe UI', sans-serif;
+  font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-transform: uppercase;
+  animation: nameFade 1.2s ease 0.8s both;
+}
+
+@keyframes nameFade {
+  from { opacity: 0; letter-spacing: 8px; }
+  to { opacity: 1; letter-spacing: 4px; }
+}
+
+/* ===== Progress bar ===== */
+.loading-bar {
+  width: min(240px, 70vw);
+  height: 3px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 99px;
+  background: #ffffff;
+  animation: barLoad 5s ease-in-out forwards;
+}
+
+@keyframes barLoad {
+  0% { width: 0%; }
+  60% { width: 75%; }
+  100% { width: 100%; }
+}
+
+/* ===== Teks bawah ===== */
+.loading-sub {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  animation: subFade 1.2s ease 1s both;
+}
+
+@keyframes subFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== Fade-in overlay ===== */
+@keyframes loadingFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== Fade-out saat selesai ===== */
+.loading-overlay.fade-out {
+  animation: loadingFadeOut 0.6s ease forwards;
+}
+
+@keyframes loadingFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* ===== Responsive Mobile ===== */
+@media (max-width: 768px) {
+  .loading-overlay {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+      env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  .loading-content {
+    gap: 20px;
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .mg-svg {
+    width: min(240px, 82vw);
+  }
+
+  .mg-stroke,
+  .mg-underline {
+    stroke-width: 2.5;
+  }
+
+  .loading-name {
+    font-size: 1rem;
+    letter-spacing: 3px;
+    line-height: 1.4;
+    padding: 0 8px;
+    word-break: break-word;
+  }
+
+  .loading-bar {
+    width: min(200px, 74vw);
+  }
+
+  .loading-sub {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* Layar sangat kecil (≤ 360px) */
+@media (max-width: 360px) {
+  .mg-svg {
+    width: min(190px, 80vw);
+  }
+
+  .loading-content {
+    gap: 16px;
+  }
+
+  .loading-name {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+  }
+
+  .loading-bar {
+    width: min(170px, 72vw);
+  }
+}

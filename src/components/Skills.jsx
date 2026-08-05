@@ -14,8 +14,8 @@ const SKILLS = [
   { name: "Laravel", Icon: SiLaravel, glow: "#FF2D20" },
   { name: "HTML", Icon: FaHtml5, glow: "#f97362" },
   { name: "CSS", Icon: FaCss3Alt, glow: "#5227ff" },
-  { name: "Claude AI", Icon: SiClaude, glow: "#d97757" },
-  { name: "Blackbox AI", Icon: FaRobot, glow: "#8b5cf6" },
+  { name: "Claude", Icon: SiClaude, glow: "#d97757" },
+  { name: "Blackbox", Icon: FaRobot, glow: "#8b5cf6" },
   { name: "Database", Icon: FaDatabase, glow: "#f5c451" },
   { name: "Figma", Icon: FaFigma, glow: "#B497CF" },
 ];
@@ -34,7 +34,7 @@ const ORBIT = SKILLS.map((skill, i) => {
 function Skills() {
   return (
     <section className="skills" id="skills">
-      <h2>Skills</h2>
+      <h2>SKILLS</h2>
 
       <div className="skills-orbit">
         {/* garis + titik energi yang mengalir ke foto */}
@@ -70,7 +70,7 @@ function Skills() {
 
         {/* foto di tengah */}
         <div className="orbit-center">
-          <img src="/image/me2.png" alt="Me" />
+<img src="image/me2.png" alt="Me" />
         </div>
 
         {/* skill card mengelilingi foto */}

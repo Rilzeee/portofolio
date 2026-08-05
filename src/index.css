@@ -78,6 +78,21 @@ body {
   overflow: hidden; /* Mencegah konten section tembus/terlihat di section lain */
 }
 
+/* Di layar kecil, matikan snap-scroll & biarkan konten mengalir penuh
+   agar tidak terpotong / bisa di-scroll normal di mobile. */
+@media (max-width: 768px) {
+  html,
+  body {
+    scroll-snap-type: none;
+  }
+
+  .section-snap {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+  }
+}
+
 #root {
   width: 100vw;
   min-height: 100svh;
