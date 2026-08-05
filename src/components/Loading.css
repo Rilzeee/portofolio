@@ -174,18 +174,34 @@
 /* ===== Responsive Mobile ===== */
 @media (max-width: 768px) {
   .loading-overlay {
-    padding: env(safe-area-inset-top) env(safe-area-inset-right)
-      env(safe-area-inset-bottom) env(safe-area-inset-left);
+    height: 100dvh;
+    padding: 0;
+  }
+
+  /* Sembunyikan glow besar agar tidak menyebabkan overflow */
+  .loading-glow {
+    display: none;
   }
 
   .loading-content {
-    gap: 20px;
-    padding: 20px;
+    width: 100%;
     max-width: 100%;
+    gap: 18px;
+    padding: 16px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .loading-monogram {
+    width: 100%;
   }
 
   .mg-svg {
-    width: min(240px, 82vw);
+    display: block;
+    width: min(240px, 80vw);
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
   }
 
   .mg-stroke,
@@ -194,39 +210,41 @@
   }
 
   .loading-name {
-    font-size: 1rem;
-    letter-spacing: 3px;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
     line-height: 1.4;
-    padding: 0 8px;
+    padding: 0 12px;
     word-break: break-word;
+    max-width: 100%;
   }
 
   .loading-bar {
-    width: min(200px, 74vw);
+    width: min(200px, 70vw);
   }
 
   .loading-sub {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
   }
 }
 
 /* Layar sangat kecil (≤ 360px) */
 @media (max-width: 360px) {
   .mg-svg {
-    width: min(190px, 80vw);
+    width: min(170px, 78vw);
   }
 
   .loading-content {
-    gap: 16px;
+    gap: 14px;
+    padding: 12px;
   }
 
   .loading-name {
-    font-size: 0.85rem;
-    letter-spacing: 2px;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
   }
 
   .loading-bar {
-    width: min(170px, 72vw);
+    width: min(150px, 70vw);
   }
 }
