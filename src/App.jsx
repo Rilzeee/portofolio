@@ -35,6 +35,45 @@ function App() {
     };
   }, []);
 
+  // Cegah pinch-zoom & geser horizontal di seluruh aplikasi (khusus mobile/iOS)
+  useEffect(() => {
+    let startX = 0;
+    let startY = 0;
+
+    const handleTouchStart = (e) => {
+      if (e.touches.length === 1) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      }
+    };
+
+    const handleTouchMove = (e) => {
+      // Blokir pinch-zoom (multi-touch)
+      if (e.touches.length > 1) {
+        e.preventDefault();
+        return;
+      }
+
+      // Blokir geser horizontal (biarkan scroll vertikal)
+      if (e.touches.length === 1) {
+        const dx = e.touches[0].clientX - startX;
+        const dy = e.touches[0].clientY - startY;
+        // Jika gerakan lebih horizontal daripada vertikal, blokir
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+          e.preventDefault();
+        }
+      }
+    };
+
+    document.addEventListener("touchstart", handleTouchStart, { passive: true });
+    document.addEventListener("touchmove", handleTouchMove, { passive: false });
+
+    return () => {
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, []);
+
 if (loading) {
     return <Loading fadeOut={fadeOut} />;
   }
